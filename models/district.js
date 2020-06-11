@@ -7,13 +7,13 @@ exports.all = async (result) => {
   });
 };
 
-// exports.select_district_departement = async (departement, result) => { 
-//   await db.query(
-//     "SELECT * FROM district where CodeDir = ?",
-//     departement.Code_Direction,
-//     (err, res) => {
-//       if (err) result(null, err);
-//       else result(null, res);
-//     }
-//   );
-// };
+exports.select_district_departement = async (departement, result) => { 
+  await db.query(
+    "SELECT * FROM district where CodeDir = ?",
+    departement.Code_Direction,
+    (err, res) => {
+      if (err) result(null, err);
+      else result(null, res);
+    }
+  );
+};

@@ -18,14 +18,14 @@ exports.all = async(result) => {
 //     );
 // };
 
-// exports.select_commune_departement = async(departement,result) => {
-//     await db.query(
-//         "SELECT * FROM commune where Code_Direction = ?",
-//         departement.Code_Direction,
-//         (err, res) => {
-//             if (err) result(null, err);
-//             else result(null, res);
-//         }
-//     );
-// };
+exports.select_commune_departement = async(departement,result) => {
+    await db.query(
+        "SELECT * FROM commune where Code_Direction = ?",
+        departement.Code_Direction,
+        (err, res) => {
+            if (err) result(null, err);
+            else result(null, res);
+        }
+    );
+};
 

@@ -23,17 +23,16 @@ exports.all = async (req, res) => {
 //     res.json(result);
 //   });
 // };
-
-// exports.select_commune_departement = async (req, res) => {
-//     const { Code_Direction } = req.body;
+exports.select_commune_departement = async (req, res) => {
+    const { Code_Direction } = req.body;
   
-//     const departement = {
-//         Code_Direction: Code_Direction,
-//     };
-//     await commune.select_commune_departement(departement, (err, result) => {
-//       if (err) {
-//         console.log(`Error: ${err}`);
-//       }
-//       res.json(result);
-//     });
-//   };
+    const departement = {
+        Code_Direction: Code_Direction,
+    };
+    await commune.select_commune_departement(departement, (err, result) => {
+      if (err) {
+        console.log(`Error: ${err}`);
+      }
+      res.json(result);
+    });
+  };
