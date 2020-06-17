@@ -1,15 +1,18 @@
 const expess = require("express");
 const usersRoutes = require("./routes/usersRoutes");
-const categorie = require("./Routes/categorieRoutes");
-const niveau = require("./Routes/niveauRoutes");
-const programme = require("./Routes/programmeRoutes");
-const public_cible = require("./Routes/public_cibleRoutes");
-const vacation = require("./Routes/vacationRoutes");
+const categorieRoutes = require("./Routes/categorieRoutes");
+const niveauRoutes = require("./Routes/niveauRoutes");
+const programmeRoutes = require("./Routes/programmeRoutes");
+const public_cibleRoutes = require("./Routes/public_cibleRoutes");
+const vacationRoutes = require("./Routes/vacationRoutes");
 const departementRoutes = require("./Routes/departementRoutes");
 const arrondissementRoutes = require("./Routes/arrondissementRoutes");
 const communeRoutes = require("./Routes/communeRoutes");
 const districtRoutes = require("./Routes/districtRoutes");
+const modalite_fonctionnementRoutes = require("./Routes/modalite_fonctionnementRoutes");
+
 const section_communaleRoutes = require("./Routes/section_communaleRoutes");
+const institutionRoutes = require("./routes/institutionRoutes");
 const cors = require("cors");
 
 const app = expess();
@@ -25,11 +28,13 @@ app.use("/app/sace", arrondissementRoutes);
 app.use("/app/sace", communeRoutes);
 app.use("/app/sace", districtRoutes);
 app.use("/app/sace", section_communaleRoutes);
-app.use("/app/sace", categorie);
-app.use("/app/sace", niveau);
-app.use("/app/sace", programme);
-app.use("/app/sace", public_cible);
-app.use("/app/sace", vacation);
+app.use("/app/sace", categorieRoutes);
+app.use("/app/sace", niveauRoutes);
+app.use("/app/sace", programmeRoutes);
+app.use("/app/sace", public_cibleRoutes);
+app.use("/app/sace", vacationRoutes);
+app.use("/app/sace", modalite_fonctionnementRoutes);
+app.use("/app/sace", institutionRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => console.log(`Port d'ecoute du Server: ${port}`));
