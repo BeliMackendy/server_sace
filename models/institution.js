@@ -8,10 +8,9 @@ exports.Insert = async (newdemande, result) => {
   });
 };
 
-exports.Update = async (newdemande, result) => {
-  
+exports.Update = async (newdemande, result) => {  
   await db.query(
-    "UPDATE institution set adresse = ?, tel = ?, email = ?, categorie = ?, type_categorie = ?, niveau = ?, vacation = ?, modalite_fonctionnement= ?, programme = ?, type_programme = ?, affiliation= ?, institution_affiliation= ?, cible = ? where Id_institution =?",
+    "UPDATE institution set adresse = ?, tel = ?, email = ?, categorie = ?, type_categorie = ?, niveau = ?, vacation = ?, modalite= ?, programme = ?, type_programme = ?, affiliation= ?, institution_affiliation= ?, cible = ? where Id_institution =?",
     [
       newdemande.adresse,
       newdemande.tel,
@@ -20,7 +19,7 @@ exports.Update = async (newdemande, result) => {
       newdemande.type_categorie,
       newdemande.niveau,
       newdemande.vacation,
-      newdemande.modalite_fonctionnement,
+      newdemande.modalite,
       newdemande.programme,
       newdemande.type_programme,
       newdemande.affiliation,

@@ -1,4 +1,4 @@
-const institution = require("../Models/institution");
+const institutionModels = require("../Models/institution");
 
 exports.Insert = async (req, res) => {
   const {
@@ -20,10 +20,10 @@ exports.Insert = async (req, res) => {
     typeprogramme,
     affiliation,
     institution_affiliation,
-    cible,    
+    cible,
     user,
   } = req.body;
-  
+
   var today = new Date();
   var dd = today.getDate();
 
@@ -61,8 +61,8 @@ exports.Insert = async (req, res) => {
     date_demande: today,
     user: user,
   };
-  
-  await institution.Insert(demande, (err, result) => {
+
+  await institutionModels.Insert(demande, (err, result) => {
     if (err) console.log(err);
     res.json(result);
   });
@@ -70,7 +70,7 @@ exports.Insert = async (req, res) => {
 
 exports.Update = async (req, res) => {
   const {
-    institution_,
+    Id_institution,
     adresse,
     tel,
     email,
@@ -84,10 +84,10 @@ exports.Update = async (req, res) => {
     affiliation,
     institution_affiliation,
     cible,
-  } = req.body;
+  } = req.body;  
 
   const demande = {
-    Id_institution: institution_,
+    Id_institution: Id_institution,
     adresse: adresse,
     tel: tel,
     email: email,
@@ -95,15 +95,15 @@ exports.Update = async (req, res) => {
     type_categorie: type_categorie,
     niveau: niveau,
     vacation: vacation,
-    modalite_fonctionnement: modalite,
+    modalite: modalite,
     programme: programme,
     type_programme: type_programme,
     affiliation: affiliation,
     institution_affiliation: institution_affiliation,
     cible: cible,
-  };  
+  }; 
 
-  await institution.Update(demande, (err, result) => {
+  await institutionModels.Update(demande, (err, result) => {
     if (err) console.log(err);
     res.json(demande);
   });
@@ -115,7 +115,7 @@ exports.selectInstitutionUser = async (req, res) => {
   const institution_ = {
     user: user,
   };
-  await institution.selectInstitutionUser(institution_, (err, result) => {
+  await institutionModels.selectInstitutionUser(institution_, (err, result) => {
     if (err) {
       console.log(`Error: ${err}`);
     }
