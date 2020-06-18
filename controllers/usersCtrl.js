@@ -25,7 +25,8 @@ exports.AddUser = async (req, res) => {
       res.status(404).send(err);
       return;
     }
-    const token = jwt.sign({ id: result.id }, config.get("jwtPrivateKey"));
+    // const token = jwt.sign({ id: result.id }, config.get("jwtPrivateKey"));
+    const token = jwt.sign({ id: result.id }, "SaceKey");
     res.header("x-auth-token", token).send({ token });
   });
 };
@@ -52,13 +53,15 @@ exports.Authentication = async (req, res) => {
 
     if (!validationPassword)
       return res.status(404).send("Email ou Password non correct");
-    const token = jwt.sign({ id: result[0].id }, config.get("jwtPrivateKey"));
+    // const token = jwt.sign({ id: result[0].id }, config.get("jwtPrivateKey"));
+    const token = jwt.sign({ id: result[0].id }, "SaceKey");
 
-    res.json({ token });
+    // res.json({ token });
+    res.header("x-auth-token", token).send({ token });
   });
 };
 
-exports.SelectMe = async (req, res) => {
+exports.SelectMe = async (req, res) => { 
   const id = req.user.id;
   const user = {
     id: id,

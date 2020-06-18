@@ -6,7 +6,8 @@ module.exports = function Authorisation(req, res, next) {
   if (!token) return res.status(401).send("Accès refusé. Aucun jeton fourni");
 
   try {
-    const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+    // const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+    const decoded = jwt.verify(token, "SaceKey");
     req.user = decoded;
     next();
   } catch (error) {
