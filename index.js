@@ -1,4 +1,6 @@
 const expess = require("express");
+
+const fileUpload = require("express-fileupload");
 const usersRoutes = require("./routes/usersRoutes");
 const categorieRoutes = require("./Routes/categorieRoutes");
 const niveauRoutes = require("./Routes/niveauRoutes");
@@ -10,6 +12,10 @@ const arrondissementRoutes = require("./Routes/arrondissementRoutes");
 const communeRoutes = require("./Routes/communeRoutes");
 const districtRoutes = require("./Routes/districtRoutes");
 const modalite_fonctionnementRoutes = require("./Routes/modalite_fonctionnementRoutes");
+const individuelleRoutes = require("./Routes/e_individuelleRoutes");
+const nomscollectifsRoutes = require("./Routes/e_nomscollectifsRoutes");
+const personnemoraleRoutes = require("./Routes/e_personnemoraleRoutes");
+const documentinstitutionRoutes =require("./Routes/document_institutionRoutes")
 
 const section_communaleRoutes = require("./Routes/section_communaleRoutes");
 const institutionRoutes = require("./routes/institutionRoutes");
@@ -17,6 +23,7 @@ const cors = require("cors");
 
 const app = expess();
 
+app.use(fileUpload());
 app.use(cors());
 app.use(expess.json());
 app.use(expess.urlencoded({ extended: true }));
@@ -35,6 +42,10 @@ app.use("/app/sace", public_cibleRoutes);
 app.use("/app/sace", vacationRoutes);
 app.use("/app/sace", modalite_fonctionnementRoutes);
 app.use("/app/sace", institutionRoutes);
+app.use("/app/sace", individuelleRoutes);
+app.use("/app/sace", nomscollectifsRoutes);
+app.use("/app/sace", personnemoraleRoutes);
+app.use("/app/sace", documentinstitutionRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => console.log(`Port d'ecoute du Server: ${port}`));
