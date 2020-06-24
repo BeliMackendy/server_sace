@@ -42,3 +42,18 @@ exports.Insert = async (req, res) => {
     }
   });
 };
+
+exports.select_byInstitution = async (req,res)=>{
+  const{id}=req.body
+
+  const newdata = {
+    id_institution:id
+  } 
+
+  await e_personnemorale.select_byInstitution(newdata, (err, result) => {
+    if (err) {
+      console.log(`Error: ${err}`);
+    }
+    res.json(result);
+  });
+}

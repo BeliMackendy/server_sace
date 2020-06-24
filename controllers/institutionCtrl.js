@@ -52,7 +52,7 @@ exports.Insert = async (req, res) => {
     type_categorie: typecategorie,
     niveau: niveau,
     vacation: vacation,
-    modalite_fonctionnement: modalite,
+    modalite: modalite,
     programme: programme,
     type_programme: typeprogramme,
     affiliation: affiliation,
